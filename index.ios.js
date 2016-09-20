@@ -6,49 +6,43 @@
 
 import React, { Component } from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
+    AppRegistry,
+    StyleSheet,
+    TextInput,
+    Text,
+    View
 } from 'react-native';
+var Dimensions=require('Dimensions');
+var {width,height,scale}=Dimensions.get('window');
 
 class HelloRN extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-          Hello 曹智民
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+        <View style={styles.container}>
+          <TextInput
+              style={styles.contain_text}
+              keyboardType={'number-pad'}
+              autoFocus={true}
+              clearButtonMode={"always"}
+              placeholder={'我是占位文字'}
+              defaultValue="ok"
+              />
+        </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  contain_text:{
+    height:60,
+    borderColor:"cyan",
+    borderWidth:1,
+    width:width,
+      marginTop:20
   },
 });
-
-AppRegistry.registerComponent('HelloRN', () => HelloRN);
+AppRegistry.registerComponent('HelloRN', () => HelloRN)
