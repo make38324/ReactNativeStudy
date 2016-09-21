@@ -12,6 +12,7 @@ import {
     Text,
     TouchableOpacity,
     AlertIOS,
+    ScrollView,
     View,
     ListView
 } from 'react-native';
@@ -23,20 +24,12 @@ var {width,height,scale}=Dimensions.get('window');
 var HelloRN=React.createClass({
     render() {
         return (
-            <View style={styles.container}>
-                <View>
-                    <TouchableOpacity
-                        activeOpacity={0.2}
-                        onPress={()=>this.processPress("点击")}
-                        onLongPress={()=>this.processPress("长按")}
-                        onPressIn={()=>this.processPress("按下")}
-                        onPressOut={()=>this.processPress("抬起")}
-                        >
-                        <Text style={{marginTop: 10,backgroundColor: 'blue',width:width}}>点击变色</Text>
-                    </TouchableOpacity>
-                    <Text>{this.state.title}</Text>
-                </View>
-            </View>
+            <ScrollView
+                horizontal={true}//横向
+                pagingEnabled={true}//分页滑动
+                >
+                {this.renderChildren()}
+            </ScrollView>
         );
     },
     getInitialState(){
@@ -49,28 +42,21 @@ var HelloRN=React.createClass({
         this.setState({
             title:event
         })
+    },
+    renderChildren(){
+        var child=[];
+        var colors=['red','blue','cyan','black','pink']
+        for(var i=0;i<10;i++){
+            child.push(
+                <View key={i}
+                      style={{backgroundColor: colors[i%5],width: width,height: 200}}
+                    />
+            );
+        }
+        return child;
     }
 })
-/**
- * Es6写法
- */
-//class HelloRN extends Component {
-//    render() {
-//        return (
-//            <View style={styles.container}>
-//                <View onPress={this.processPress()}>
-//                    <TouchableOpacity activeOpacity={0.2}>
-//                        <Text style={{marginTop: 10,backgroundColor: 'blue',width:width}}>点击变色</Text>
-//                    </TouchableOpacity>
-//                </View>
-//            </View>
-//        );
-//    }
-//
-//    processPress() {
-//        AlertIOS.alert("被点击");
-//    }
-//}
+
 
 const styles = StyleSheet.create({
     container: {
