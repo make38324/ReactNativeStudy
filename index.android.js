@@ -10,38 +10,22 @@ import {
     StyleSheet,
     TextInput,
     Text,
-    Image,
     View
 } from 'react-native';
 var Dimensions=require('Dimensions');
 var {width,height,scale}=Dimensions.get('window');
+var LoginView=require("./LoginView");
 class HelloRN extends Component {
     render() {
         return (
-            <View style={styles.container}>
-                <TextInput
-                    style={styles.contain_text}
-                    keyboardType={'numeric'}
-                    defaultValue="默认文字"
-                    autoFocus={true}
-                    clearButtonMode={"always"}//android无效
-                    placeholder={'我是占位文字'}
-                    />
-                <Image source={{uri:"https://facebook.github.io/react/img/logo_og.png"}}
-                       style={{width: 80,height: 80,marginTop: 10}}
-                    />
-                <Image
-                    source={require('./image/danjianbao.png')}
-                    style={{width: width,backgroundColor: 'black',marginTop: 10}}
-                    resizeMode= {'stretch'}
-                    />
-            </View>
+            <LoginView />
         );
     }
 }
 
 const styles = StyleSheet.create({
     container: {
+        alignItems: 'center',
         backgroundColor: '#F5FCFF',
     },
     contain_text:{
@@ -49,6 +33,7 @@ const styles = StyleSheet.create({
         borderColor:"cyan",
         borderWidth:1,
         width:width,
+        marginTop:20
     },
 });
 AppRegistry.registerComponent('HelloRN', () => HelloRN)

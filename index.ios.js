@@ -14,20 +14,11 @@ import {
 } from 'react-native';
 var Dimensions=require('Dimensions');
 var {width,height,scale}=Dimensions.get('window');
-
+var LoginView=require("./LoginView");
 class HelloRN extends Component {
   render() {
     return (
-        <View style={styles.container}>
-          <TextInput
-              style={styles.contain_text}
-              keyboardType={'number-pad'}
-              autoFocus={true}
-              clearButtonMode={"always"}
-              placeholder={'我是占位文字'}
-              defaultValue="ok"
-              />
-        </View>
+        <LoginView />
     );
   }
 }
